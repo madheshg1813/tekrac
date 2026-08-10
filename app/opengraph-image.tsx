@@ -41,6 +41,7 @@ export default async function Image() {
               justifyContent: "center",
             }}
           >
+            {/* next/image cannot render inside next/og's ImageResponse */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={LOGO_ICON_DATA_URI} width={76} height={76} alt="" />
           </div>
