@@ -11,8 +11,8 @@ export const siteConfig = {
   ogImage: "/opengraph-image",
   phone: "+91 73580 26779",
   phoneHref: "tel:+917358026779",
-  email: "info@tekrecewaste.com",
-  emailHref: "mailto:info@tekrecewaste.com",
+  email: "ewastetekrec@gmail.com",
+  emailHref: "mailto:ewastetekrec@gmail.com",
   address: {
     line1: "No. 6, Ground Floor, Kalaignar Karunanidhi Street",
     line2: "Perungudi",
