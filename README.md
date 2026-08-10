@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TEKREC E Waste Recycling — Website
+
+A premium, production-ready corporate website for TEKREC E Waste Recycling, built with Next.js 15 (App Router), TypeScript, Tailwind CSS 4 and Framer Motion.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` — start the development server
+- `npm run build` — create a production build
+- `npm run start` — serve the production build
+- `npm run lint` — run ESLint
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `app/` — routes (Home, About, Services, Industries, Process, Certifications, Contact), layout, SEO files (`sitemap.ts`, `robots.ts`, `opengraph-image.tsx`, `icon.tsx`)
+- `components/` — reusable UI (`ui/`), layout (`layout/`), and shared components (Navbar, Footer, ContactForm, PageHero)
+- `sections/` — page-specific sections grouped by page (`home/`, `about/`, `services/`, `industries/`, `process/`, `certifications/`, `contact/`, `shared/`)
+- `lib/` — site configuration (`constants.ts`), content data (`data.ts`), and utilities (`utils.ts`)
+- `types/` — shared TypeScript interfaces
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Business details (address, phone, email, testimonials) in `lib/constants.ts` and `lib/data.ts` are placeholder content — replace with real business information before launch.
+- The Google Maps embed in `lib/constants.ts` (`mapsEmbedSrc`) uses the keyless `output=embed` query format — swap in a Maps Embed API key/URL if you need guaranteed long-term availability.
+- Update `siteConfig.url` in `lib/constants.ts` to the real production domain before deploying, as it feeds canonical URLs, Open Graph tags and the sitemap.
