@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Hero } from "@/sections/home/Hero";
 import { TrustedBy } from "@/sections/home/TrustedBy";
 import { CompanyIntro } from "@/sections/home/CompanyIntro";
+import { DeviceLifecycle } from "@/sections/home/DeviceLifecycle";
 import { KeyServices } from "@/sections/home/KeyServices";
 import { Stats } from "@/sections/home/Stats";
 import { WhyChooseUs } from "@/sections/home/WhyChooseUs";
@@ -24,6 +25,7 @@ export default function Home() {
       <Hero />
       <TrustedBy />
       <CompanyIntro />
+      <DeviceLifecycle />
       <KeyServices />
       <Stats />
       <WhyChooseUs />

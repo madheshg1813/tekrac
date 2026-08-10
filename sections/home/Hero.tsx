@@ -1,7 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, ShieldCheck, Leaf, Recycle } from "lucide-react";
+import {
+  ArrowRight,
+  Phone,
+  ShieldCheck,
+  Leaf,
+  Recycle,
+  Laptop,
+  Server,
+  Smartphone,
+  HardDrive,
+  Cpu,
+} from "lucide-react";
 
 import { siteConfig } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
@@ -20,11 +31,30 @@ const impactStats = [
   { value: "0%", label: "Landfill Waste" },
 ];
 
+const backgroundDevices = [
+  { icon: Laptop, top: "8%", left: "6%", size: "size-16", rotate: "-12deg" },
+  { icon: Server, top: "62%", left: "3%", size: "size-20", rotate: "8deg" },
+  { icon: Smartphone, top: "20%", left: "88%", size: "size-12", rotate: "10deg" },
+  { icon: HardDrive, top: "70%", left: "90%", size: "size-14", rotate: "-8deg" },
+  { icon: Cpu, top: "4%", left: "45%", size: "size-10", rotate: "6deg" },
+];
+
 export function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-white/5 bg-ink-950 pb-20 pt-32 md:pb-28 md:pt-40">
       <div className="pointer-events-none absolute inset-0 bg-noise opacity-25" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/50 to-transparent" />
+
+      <div className="pointer-events-none absolute inset-0 hidden overflow-hidden lg:block">
+        {backgroundDevices.map(({ icon: Icon, top, left, size, rotate }, index) => (
+          <Icon
+            key={index}
+            className={`absolute ${size} text-white/[0.04]`}
+            style={{ top, left, transform: `rotate(${rotate})` }}
+            strokeWidth={1.25}
+          />
+        ))}
+      </div>
 
       <Container className="relative">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-[1.15fr_0.85fr]">

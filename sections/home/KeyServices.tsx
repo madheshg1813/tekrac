@@ -11,7 +11,7 @@ export function KeyServices() {
   const featured = services.slice(0, 6);
 
   return (
-    <section className="section-padding bg-ink-50/60">
+    <section className="section-padding bg-white">
       <Container className="flex flex-col gap-14">
         <SectionHeading
           eyebrow="What We Do"
