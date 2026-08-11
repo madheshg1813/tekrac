@@ -1,23 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Battery,
-  HardDrive,
-  Laptop,
-  Printer,
-  Recycle,
-  Server,
-  Smartphone,
-} from "lucide-react";
+import { Award, QrCode, Recycle, ShieldCheck, Truck, Wrench } from "lucide-react";
 
-const orbitDevices = [
-  { icon: Laptop, angle: 0 },
-  { icon: Server, angle: 60 },
-  { icon: Smartphone, angle: 120 },
-  { icon: HardDrive, angle: 180 },
-  { icon: Printer, angle: 240 },
-  { icon: Battery, angle: 300 },
+const orbitStages = [
+  { icon: Truck, label: "Pickup", angle: 0 },
+  { icon: QrCode, label: "Logged", angle: 60 },
+  { icon: ShieldCheck, label: "Data Wipe", angle: 120 },
+  { icon: Wrench, label: "Dismantle", angle: 180 },
+  { icon: Recycle, label: "Recycle", angle: 240 },
+  { icon: Award, label: "Certified", angle: 300 },
 ];
 
 export function DeviceOrbit() {
@@ -32,13 +24,13 @@ export function DeviceOrbit() {
         <Recycle className="size-11 md:size-12" strokeWidth={1.75} />
       </div>
 
-      {/* orbiting device icons */}
+      {/* orbiting lifecycle stages */}
       <motion.div
         className="absolute inset-0"
         animate={{ rotate: 360 }}
         transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
       >
-        {orbitDevices.map(({ icon: Icon, angle }) => (
+        {orbitStages.map(({ icon: Icon, label, angle }) => (
           <div
             key={angle}
             className="absolute left-1/2 top-1/2 size-12 md:size-14"
@@ -49,9 +41,14 @@ export function DeviceOrbit() {
             <motion.div
               animate={{ rotate: -360 }}
               transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-              className="flex size-12 items-center justify-center rounded-2xl border border-ink-100 bg-white text-brand-700 shadow-soft md:size-14"
+              className="flex flex-col items-center gap-1.5"
             >
-              <Icon className="size-5 md:size-6" strokeWidth={1.75} />
+              <div className="flex size-12 items-center justify-center rounded-2xl border border-ink-100 bg-white text-brand-700 shadow-soft md:size-14">
+                <Icon className="size-5 md:size-6" strokeWidth={1.75} />
+              </div>
+              <span className="whitespace-nowrap text-[0.65rem] font-semibold text-ink-600">
+                {label}
+              </span>
             </motion.div>
           </div>
         ))}
