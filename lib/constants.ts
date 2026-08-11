@@ -21,9 +21,10 @@ export const siteConfig = {
     zip: "600096",
     country: "India",
   },
-  hours: "Mon – Sat: 9:00 AM – 6:30 PM",
+  hours: "Mon – Sat: 10:00 AM – 8:00 PM",
   mapsEmbedSrc:
     "https://www.google.com/maps?q=Kalaignar+Karunanidhi+Street+Perungudi+Chennai+Tamil+Nadu&output=embed",
+  googleBusinessUrl: "https://maps.app.goo.gl/PzZJD2SW7X87HWxe8?g_st=iw",
   social: {
     linkedin: "https://www.linkedin.com/",
     twitter: "https://twitter.com/",

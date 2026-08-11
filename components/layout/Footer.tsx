@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 
 import { navLinks, siteConfig } from "@/lib/constants";
 import { services } from "@/lib/data";
@@ -7,12 +7,14 @@ import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
 import {
   FacebookIcon,
+  GoogleIcon,
   InstagramIcon,
   LinkedinIcon,
   TwitterIcon,
 } from "@/components/ui/SocialIcons";
 
 const socialLinks = [
+  { icon: GoogleIcon, href: siteConfig.googleBusinessUrl, label: "Google Business Profile" },
   { icon: LinkedinIcon, href: siteConfig.social.linkedin, label: "LinkedIn" },
   { icon: TwitterIcon, href: siteConfig.social.twitter, label: "Twitter" },
   { icon: FacebookIcon, href: siteConfig.social.facebook, label: "Facebook" },
@@ -87,11 +89,22 @@ export function Footer() {
             <ul className="flex flex-col gap-4 text-sm text-ink-400">
               <li className="flex gap-3">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-brand-500" />
-                <span>
-                  {siteConfig.address.line1}, {siteConfig.address.line2},<br />
-                  {siteConfig.address.city}, {siteConfig.address.state} {siteConfig.address.zip},{" "}
-                  {siteConfig.address.country}
-                </span>
+                <div>
+                  <span>
+                    {siteConfig.address.line1}, {siteConfig.address.line2},<br />
+                    {siteConfig.address.city}, {siteConfig.address.state} {siteConfig.address.zip}
+                    , {siteConfig.address.country}
+                  </span>
+                  <a
+                    href={siteConfig.googleBusinessUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-2 flex items-center gap-1.5 font-semibold text-brand-400 hover:text-brand-300"
+                  >
+                    View on Google Maps
+                    <ExternalLink className="size-3.5" />
+                  </a>
+                </div>
               </li>
               <li className="flex gap-3">
                 <Phone className="size-4 shrink-0 text-brand-500" />
@@ -114,10 +127,10 @@ export function Footer() {
             &copy; {year} {siteConfig.legalName}. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="/contact" className="hover:text-brand-400">
+            <Link href="/privacy" className="hover:text-brand-400">
               Privacy Policy
             </Link>
-            <Link href="/contact" className="hover:text-brand-400">
+            <Link href="/terms" className="hover:text-brand-400">
               Terms of Service
             </Link>
           </div>

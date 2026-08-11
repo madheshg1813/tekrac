@@ -18,7 +18,7 @@ const contactCards = [
   {
     icon: Phone,
     title: "Call Us",
-    lines: [siteConfig.phone, "Mon - Sat, 9 AM - 6:30 PM"],
+    lines: [siteConfig.phone, siteConfig.hours],
   },
   {
     icon: Mail,

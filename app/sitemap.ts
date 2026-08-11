@@ -13,12 +13,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
   ];
 
+  const legalRoutes = ["/privacy", "/terms"];
+
   const servicePages = services.map((service) => `/services/${service.slug}`);
 
-  return [...routes, ...servicePages].map((route) => ({
+  return [...routes, ...servicePages, ...legalRoutes].map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
-    priority: route === "" ? 1 : route.startsWith("/services/") ? 0.7 : 0.8,
+    priority:
+      route === ""
+        ? 1
+        : route.startsWith("/services/")
+          ? 0.7
+          : legalRoutes.includes(route)
+            ? 0.3
+            : 0.8,
   }));
 }
