@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -165,30 +166,38 @@ export function Hero() {
               </motion.div>
             </div>
 
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-ink-900">
-              <div className="flex items-center justify-between border-b border-white/10 px-7 py-5">
-                <span className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-400">
-                  Impact Report
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-ink-900 shadow-2xl">
+              <div className="relative aspect-[4/5] w-full">
+                <Image
+                  src="/hero-ewaste.jpg"
+                  alt="A bin overflowing with collected e-waste — keyboards, phones, remotes and circuit boards ready for recycling"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 40vw, 90vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/25 to-ink-950/10" />
+              </div>
+
+              <div className="absolute left-5 top-5 md:left-6 md:top-6">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-ink-950/60 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
+                  <span className="size-1.5 rounded-full bg-brand-400" />
+                  Live Impact
                 </span>
-                <Recycle className="size-5 text-brand-400" />
               </div>
 
-              <div className="grid grid-cols-2 divide-x divide-y divide-white/10">
-                {impactStats.map((item) => (
-                  <div key={item.label} className="p-6">
-                    <p className="text-2xl font-bold text-white md:text-3xl">{item.value}</p>
-                    <p className="mt-1.5 text-xs text-ink-400">{item.label}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="border-t border-white/10 bg-brand-500/5 px-7 py-5">
-                <p className="text-sm font-semibold text-brand-300">
-                  &ldquo;Certified. Secure. Sustainable.&rdquo;
-                </p>
-                <p className="mt-1 text-xs text-ink-400">
-                  Every device processed with full chain-of-custody tracking.
-                </p>
+              <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+                <div className="grid grid-cols-2 gap-3">
+                  {impactStats.map((item) => (
+                    <div
+                      key={item.label}
+                      className="rounded-xl border border-white/10 bg-ink-950/70 p-3 backdrop-blur-sm md:p-4"
+                    >
+                      <p className="text-lg font-bold text-white md:text-xl">{item.value}</p>
+                      <p className="mt-0.5 text-[0.65rem] text-ink-300 md:text-xs">{item.label}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
