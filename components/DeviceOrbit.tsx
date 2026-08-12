@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 import { Award, QrCode, Recycle, ShieldCheck, Truck, Wrench } from "lucide-react";
 
 const orbitStages = [
@@ -13,6 +14,18 @@ const orbitStages = [
 ];
 
 export function DeviceOrbit() {
+  const rotate = useMotionValue(0);
+  const counterRotate = useTransform(rotate, (value) => -value);
+
+  useEffect(() => {
+    const controls = animate(rotate, 360, {
+      duration: 60,
+      repeat: Infinity,
+      ease: "linear",
+    });
+    return () => controls.stop();
+  }, [rotate]);
+
   return (
     <div className="relative mx-auto aspect-square w-full max-w-md [--orbit-r:5.5rem] sm:[--orbit-r:8rem] md:[--orbit-r:10.5rem]">
       {/* concentric rings */}
@@ -24,12 +37,10 @@ export function DeviceOrbit() {
         <Recycle className="size-7 sm:size-9 md:size-12" strokeWidth={1.75} />
       </div>
 
-      {/* orbiting lifecycle stages */}
-      <motion.div
-        className="absolute inset-0"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-      >
+      {/* orbiting lifecycle stages — a single shared motion value drives both the
+          orbit rotation and every icon's counter-rotation, so they can never drift
+          out of sync with each other (each icon animating its own clock could). */}
+      <motion.div className="absolute inset-0" style={{ rotate }}>
         {orbitStages.map(({ icon: Icon, label, angle }) => (
           <div
             key={angle}
@@ -39,8 +50,7 @@ export function DeviceOrbit() {
             }}
           >
             <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+              style={{ rotate: counterRotate }}
               className="flex flex-col items-center gap-1 sm:gap-1.5"
             >
               <div className="flex size-10 items-center justify-center rounded-xl border border-ink-100 bg-white text-brand-700 shadow-soft sm:size-12 sm:rounded-2xl md:size-14">
