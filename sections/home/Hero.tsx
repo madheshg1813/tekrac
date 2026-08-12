@@ -14,6 +14,8 @@ import {
   Cpu,
 } from "lucide-react";
 
+const emblemLeaves = [0, 60, 120, 180, 240, 300];
+
 import { siteConfig } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -136,6 +138,33 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.25 }}
             className="relative mx-auto w-full max-w-md lg:max-w-none"
           >
+            {/* recycling emblem — floating badge overlapping the panel's top-right corner */}
+            <div className="pointer-events-none absolute -top-9 -right-9 z-10 size-28 md:-top-11 md:-right-11 md:size-32">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full border border-dashed border-brand-400/40"
+              />
+              {emblemLeaves.map((angle) => (
+                <div
+                  key={angle}
+                  className="absolute left-1/2 top-1/2 flex size-5 items-center justify-center rounded-full bg-ink-950 text-brand-400 ring-4 ring-ink-950 md:size-6"
+                  style={{
+                    transform: `rotate(${angle}deg) translate(0, -3.5rem) rotate(-${angle}deg)`,
+                  }}
+                >
+                  <Leaf className="size-2.5 md:size-3" strokeWidth={2} />
+                </div>
+              ))}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                className="absolute left-1/2 top-1/2 flex size-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-lift ring-4 ring-ink-950 md:size-16"
+              >
+                <Recycle className="size-6 md:size-7" strokeWidth={1.75} />
+              </motion.div>
+            </div>
+
             <div className="overflow-hidden rounded-2xl border border-white/10 bg-ink-900">
               <div className="flex items-center justify-between border-b border-white/10 px-7 py-5">
                 <span className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-400">
