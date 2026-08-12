@@ -38,7 +38,7 @@ export function DeviceOrbit() {
           key={angle}
           className="absolute left-1/2 top-1/2 size-10 sm:size-12 md:size-14"
           style={{
-            transform: `rotate(${angle}deg) translate(0, calc(var(--orbit-r) * -1)) rotate(-${angle}deg)`,
+            transform: `translate(-50%, -50%) rotate(${angle}deg) translate(0, calc(var(--orbit-r) * -1)) rotate(-${angle}deg)`,
           }}
         >
           <div className="flex flex-col items-center gap-1 sm:gap-1.5">

@@ -150,7 +150,7 @@ export function Hero() {
                   key={angle}
                   className="absolute left-1/2 top-1/2 flex size-5 items-center justify-center rounded-full bg-ink-950 text-brand-400 ring-4 ring-ink-950 md:size-6"
                   style={{
-                    transform: `rotate(${angle}deg) translate(0, -3.5rem) rotate(-${angle}deg)`,
+                    transform: `translate(-50%, -50%) rotate(${angle}deg) translate(0, -3.5rem) rotate(-${angle}deg)`,
                   }}
                 >
                   <Leaf className="size-2.5 md:size-3" strokeWidth={2} />
