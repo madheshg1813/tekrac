@@ -102,7 +102,7 @@ export function Hero() {
                 Request Pickup
               </Button>
               <Button
-                href="/contact"
+                href={siteConfig.phoneHref}
                 variant="outline"
                 size="lg"
                 icon={Phone}
