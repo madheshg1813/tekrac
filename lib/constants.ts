@@ -37,6 +37,7 @@ export const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
+  { label: "Chennai Locations", href: "/chennai" },
   { label: "Industries", href: "/industries" },
   { label: "Process", href: "/process" },
   { label: "Certifications", href: "/certifications" },
