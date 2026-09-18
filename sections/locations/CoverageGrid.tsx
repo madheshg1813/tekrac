@@ -33,12 +33,12 @@ export function CoverageGrid({
       <Container className="relative flex flex-col gap-12">
         <SectionHeading align="left" light eyebrow="Coverage" title={title} description={description} />
 
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-7">
+        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-7">
           {visible.map((area, index) => (
             <FadeIn key={area.slug} delay={(index % 14) * 0.03}>
               <Link
                 href={`/chennai/${area.slug}`}
-                className="flex items-center justify-center rounded-lg border border-ink-700 px-3 py-3 text-center font-mono text-xs text-brand-400 transition-colors duration-300 hover:border-brand-500 hover:bg-brand-500/10 hover:text-brand-300 sm:text-sm"
+                className="flex min-h-[3.25rem] items-center justify-center rounded-lg border border-ink-700 px-2.5 py-2.5 text-center font-mono text-[0.7rem] leading-snug break-words text-brand-400 transition-colors duration-300 hover:border-brand-500 hover:bg-brand-500/10 hover:text-brand-300 sm:px-3 sm:py-3 sm:text-sm"
               >
                 {area.area}
               </Link>

@@ -22,11 +22,11 @@ export function PageHero({
       <div className="pointer-events-none absolute bottom-[-10rem] left-[-10%] size-[24rem] rounded-full bg-brand-500/10 blur-3xl" />
 
       <Container className="relative flex flex-col items-center gap-6 text-center">
-        <div className="flex items-center gap-2 text-xs font-medium text-ink-400">
+        <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-medium text-ink-400">
           <Link href="/" className="hover:text-brand-400">
             Home
           </Link>
-          <ChevronRight className="size-3.5" />
+          <ChevronRight className="size-3.5 shrink-0" />
           <span className="text-ink-200">{crumb}</span>
         </div>
 

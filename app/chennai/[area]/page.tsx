@@ -19,7 +19,6 @@ import { ServiceAreaGrid } from "@/sections/locations/ServiceAreaGrid";
 import { CoverageGrid } from "@/sections/locations/CoverageGrid";
 import { Stats } from "@/sections/home/Stats";
 import { WhyChooseUs } from "@/sections/home/WhyChooseUs";
-import { CertificationsPreview } from "@/sections/home/CertificationsPreview";
 import { TestimonialsSection } from "@/sections/home/TestimonialsSection";
 import { ProcessTimeline } from "@/sections/process/ProcessTimeline";
 import { FAQSection } from "@/sections/shared/FAQSection";
@@ -81,17 +80,21 @@ export default async function ChennaiAreaPage({
             title={`Electronics we recycle in ${area.area}`}
             description="Any of these categories can be scheduled for pickup — no minimum quantity for households."
           />
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
             {acceptedItems.map((service, index) => {
               const Icon = service.icon;
               return (
                 <FadeIn key={service.slug} delay={(index % 3) * 0.06}>
-                  <div className="flex h-full flex-col gap-4 rounded-2xl border border-ink-100 bg-white p-6 shadow-soft">
-                    <span className="flex size-11 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
-                      <Icon className="size-5" />
+                  <div className="flex h-full flex-col gap-2 rounded-2xl border border-ink-100 bg-white p-3.5 shadow-soft sm:gap-4 sm:p-6">
+                    <span className="flex size-9 items-center justify-center rounded-xl bg-brand-50 text-brand-700 sm:size-11">
+                      <Icon className="size-4 sm:size-5" />
                     </span>
-                    <h3 className="font-bold text-ink-900">{service.title}</h3>
-                    <p className="text-sm leading-relaxed text-ink-500">{service.description}</p>
+                    <h3 className="text-sm font-bold leading-snug text-ink-900 sm:text-base">
+                      {service.title}
+                    </h3>
+                    <p className="text-xs leading-relaxed text-ink-500 sm:text-sm">
+                      {service.description}
+                    </p>
                   </div>
                 </FadeIn>
               );
@@ -106,7 +109,6 @@ export default async function ChennaiAreaPage({
 
       <ProcessTimeline />
       <WhyChooseUs />
-      <CertificationsPreview />
       <TestimonialsSection />
 
       <ServiceAreaGrid

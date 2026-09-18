@@ -1,4 +1,4 @@
-import { Award, Clock, FileCheck2, ShieldCheck, Truck } from "lucide-react";
+import { Award, ShieldCheck, Truck } from "lucide-react";
 
 import { Container } from "@/components/ui/Container";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -10,12 +10,6 @@ const trustPoints = [
 ];
 
 export function LocalHighlights({ area, pincode }: { area: string; pincode: string }) {
-  const quickFacts = [
-    { icon: FileCheck2, label: "Coverage", value: `${area} & the ${pincode} pincode` },
-    { icon: Clock, label: "Response Time", value: "Pickup slot confirmed within 24 hours" },
-    { icon: Award, label: "Documentation", value: "Manifest + recycling certificate, every job" },
-  ];
-
   return (
     <section className="section-padding bg-white">
       <Container className="flex flex-col gap-10">
@@ -44,23 +38,6 @@ export function LocalHighlights({ area, pincode }: { area: string; pincode: stri
             compliance team.
           </p>
         </FadeIn>
-
-        <div className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-5 sm:grid-cols-3">
-          {quickFacts.map((fact, index) => {
-            const Icon = fact.icon;
-            return (
-              <FadeIn key={fact.label} delay={index * 0.06}>
-                <div className="flex h-full flex-col gap-3 rounded-2xl border border-ink-100 bg-ink-50/60 p-6">
-                  <span className="flex size-10 items-center justify-center rounded-xl bg-brand-600 text-white">
-                    <Icon className="size-5" />
-                  </span>
-                  <p className="text-sm font-semibold text-ink-900">{fact.label}</p>
-                  <p className="text-sm leading-relaxed text-ink-500">{fact.value}</p>
-                </div>
-              </FadeIn>
-            );
-          })}
-        </div>
       </Container>
     </section>
   );

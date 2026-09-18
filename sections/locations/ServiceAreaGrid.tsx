@@ -27,12 +27,12 @@ export function ServiceAreaGrid({
     <section className="section-padding bg-ink-50/60">
       <Container className="flex flex-col gap-12">
         <SectionHeading eyebrow="Service Areas" title={title} description={description} />
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
           {areas.map((area, index) => (
             <FadeIn key={area.slug} delay={(index % 8) * 0.04}>
               <Link
                 href={`/chennai/${area.slug}`}
-                className="group flex items-center justify-between gap-2 rounded-xl border border-ink-100 bg-white px-4 py-3.5 text-sm font-semibold text-ink-800 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:text-brand-700 hover:shadow-lift"
+                className="group flex min-h-[3.25rem] items-center justify-between gap-2 rounded-xl border border-ink-100 bg-white px-3 py-3 text-sm font-semibold leading-snug text-ink-800 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:text-brand-700 hover:shadow-lift sm:px-4 sm:py-3.5"
               >
                 <span className="flex items-center gap-2">
                   <MapPin className="size-4 shrink-0 text-brand-600" />

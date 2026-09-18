@@ -25,27 +25,27 @@ export function FAQAccordion({ items }: { items: FAQItem[] }) {
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : index)}
-              className="flex w-full items-center gap-4 px-6 py-5 text-left"
+              className="flex w-full items-start gap-3 px-4 py-4 text-left sm:items-center sm:gap-4 sm:px-6 sm:py-5"
               aria-expanded={isOpen}
             >
               <span
                 className={cn(
-                  "flex size-10 shrink-0 items-center justify-center rounded-xl transition-colors duration-300",
+                  "flex size-9 shrink-0 items-center justify-center rounded-xl transition-colors duration-300 sm:size-10",
                   isOpen ? "bg-brand-600 text-white" : "bg-brand-50 text-brand-700"
                 )}
               >
-                <HelpCircle className="size-5" />
+                <HelpCircle className="size-4 sm:size-5" />
               </span>
-              <span className="flex-1 text-base font-semibold text-ink-900 md:text-lg">
+              <span className="flex-1 text-sm font-semibold leading-snug text-ink-900 sm:text-base md:text-lg">
                 {item.question}
               </span>
               <span
                 className={cn(
-                  "flex size-8 shrink-0 items-center justify-center rounded-full bg-ink-50 text-ink-500 transition-transform duration-300",
+                  "flex size-7 shrink-0 items-center justify-center rounded-full bg-ink-50 text-ink-500 transition-transform duration-300 sm:size-8",
                   isOpen && "rotate-45 bg-brand-600 text-white"
                 )}
               >
-                <Plus className="size-4" />
+                <Plus className="size-3.5 sm:size-4" />
               </span>
             </button>
             <AnimatePresence initial={false}>
@@ -57,7 +57,7 @@ export function FAQAccordion({ items }: { items: FAQItem[] }) {
                   transition={{ duration: 0.25, ease: "easeInOut" }}
                   className="overflow-hidden"
                 >
-                  <p className="px-6 pb-6 pl-[4.5rem] text-sm leading-relaxed text-ink-500 md:text-base">
+                  <p className="px-4 pb-5 pl-[3.25rem] text-sm leading-relaxed text-ink-500 sm:px-6 sm:pb-6 sm:pl-[4.5rem] md:text-base">
                     {item.answer}
                   </p>
                 </motion.div>
