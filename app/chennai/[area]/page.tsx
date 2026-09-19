@@ -1,6 +1,22 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowRight, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  Award,
+  Battery,
+  Clock,
+  Layers,
+  Leaf,
+  Lock,
+  MapPin,
+  Network,
+  Phone,
+  Printer,
+  Refrigerator,
+  ShieldCheck,
+  Truck,
+  Tv,
+} from "lucide-react";
 
 import {
   buildAreaFaqs,
@@ -55,12 +71,12 @@ export async function generateMetadata({
 const acceptedItems = services.slice(0, 6);
 
 const additionalAccepted = [
-  "Televisions & CRT Monitors",
-  "Batteries (Li-ion & Lead Acid)",
-  "Networking Equipment",
-  "Printers & Copiers",
-  "ACs, Fridges & Appliances",
-  "Mixed E-Scrap",
+  { label: "Televisions & CRT Monitors", icon: Tv },
+  { label: "Batteries (Li-ion & Lead Acid)", icon: Battery },
+  { label: "Networking Equipment", icon: Network },
+  { label: "Printers & Copiers", icon: Printer },
+  { label: "ACs, Fridges & Appliances", icon: Refrigerator },
+  { label: "Mixed E-Scrap", icon: Layers },
 ];
 
 export default async function ChennaiAreaPage({
@@ -102,13 +118,13 @@ export default async function ChennaiAreaPage({
 
       <RollingMarquee
         items={[
-          "Free Doorstep Pickup",
-          "CPCB Authorised",
-          `Serving ${area.area}`,
-          "Certificate Issued",
-          "Secure Data Destruction",
-          "Zero Landfill Commitment",
-          "Same-Day Slots Available",
+          { label: "Free Doorstep Pickup", icon: Truck },
+          { label: "CPCB Authorised", icon: ShieldCheck },
+          { label: `Serving ${area.area}`, icon: MapPin },
+          { label: "Certificate Issued", icon: Award },
+          { label: "Secure Data Destruction", icon: Lock },
+          { label: "Zero Landfill Commitment", icon: Leaf },
+          { label: "Same-Day Slots Available", icon: Clock },
         ]}
       />
 
@@ -145,12 +161,13 @@ export default async function ChennaiAreaPage({
               If it runs on power or holds a battery, we take it — also accepted:
             </p>
             <div className="flex flex-wrap justify-center gap-2">
-              {additionalAccepted.map((tag) => (
+              {additionalAccepted.map(({ label, icon: Icon }) => (
                 <span
-                  key={tag}
-                  className="rounded-full border border-ink-200 bg-white px-3 py-1 text-xs font-medium text-ink-600"
+                  key={label}
+                  className="flex items-center gap-1.5 rounded-full border border-ink-200 bg-white px-3 py-1.5 text-xs font-medium text-ink-600"
                 >
-                  {tag}
+                  <Icon className="size-3.5 text-brand-600" />
+                  {label}
                 </span>
               ))}
             </div>

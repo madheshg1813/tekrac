@@ -1,5 +1,15 @@
 import type { Metadata } from "next";
-import { ArrowRight, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  Award,
+  CalendarClock,
+  Leaf,
+  Lock,
+  MapPin,
+  Phone,
+  ShieldCheck,
+  Truck,
+} from "lucide-react";
 
 import { chennaiAreas, getPublishedChennaiAreas, buildAreaFaqs } from "@/lib/locations";
 import { siteConfig } from "@/lib/constants";
@@ -50,13 +60,13 @@ export default function ChennaiPillarPage() {
 
       <RollingMarquee
         items={[
-          "Free Doorstep Pickup",
-          "CPCB Authorised",
-          "Serving All of Chennai",
-          "Certificate Issued",
-          "Secure Data Destruction",
-          "Zero Landfill Commitment",
-          "New Locality Added Daily",
+          { label: "Free Doorstep Pickup", icon: Truck },
+          { label: "CPCB Authorised", icon: ShieldCheck },
+          { label: "Serving All of Chennai", icon: MapPin },
+          { label: "Certificate Issued", icon: Award },
+          { label: "Secure Data Destruction", icon: Lock },
+          { label: "Zero Landfill Commitment", icon: Leaf },
+          { label: "New Locality Added Daily", icon: CalendarClock },
         ]}
       />
 

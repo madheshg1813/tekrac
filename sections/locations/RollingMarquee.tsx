@@ -1,4 +1,11 @@
-export function RollingMarquee({ items }: { items: string[] }) {
+import type { LucideIcon } from "lucide-react";
+
+export interface MarqueeItem {
+  label: string;
+  icon: LucideIcon;
+}
+
+export function RollingMarquee({ items }: { items: MarqueeItem[] }) {
   return (
     <div className="overflow-hidden border-y border-white/10 bg-ink-950 py-4">
       <div className="flex w-max animate-marquee items-center gap-10 motion-reduce:animate-none">
@@ -9,16 +16,16 @@ export function RollingMarquee({ items }: { items: string[] }) {
   );
 }
 
-function MarqueeGroup({ items, ariaHidden }: { items: string[]; ariaHidden?: boolean }) {
+function MarqueeGroup({ items, ariaHidden }: { items: MarqueeItem[]; ariaHidden?: boolean }) {
   return (
     <div className="flex shrink-0 items-center gap-10" aria-hidden={ariaHidden}>
-      {items.map((item, i) => (
+      {items.map(({ label, icon: Icon }, i) => (
         <span
           key={i}
           className="flex items-center gap-3 whitespace-nowrap text-sm font-semibold uppercase tracking-wider text-white/80 sm:text-base"
         >
-          <span className="size-1.5 shrink-0 rounded-full bg-brand-400" />
-          {item}
+          <Icon className="size-4 shrink-0 text-brand-400 sm:size-5" />
+          {label}
         </span>
       ))}
     </div>

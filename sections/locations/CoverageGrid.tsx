@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 
 import { getPublishedChennaiAreas } from "@/lib/locations";
 import { Container } from "@/components/ui/Container";
@@ -38,8 +38,9 @@ export function CoverageGrid({
             <FadeIn key={area.slug} delay={(index % 14) * 0.03}>
               <Link
                 href={`/chennai/${area.slug}`}
-                className="flex min-h-[3.25rem] items-center justify-center rounded-lg border border-ink-700 px-2.5 py-2.5 text-center font-mono text-[0.7rem] leading-snug break-words text-brand-400 transition-colors duration-300 hover:border-brand-500 hover:bg-brand-500/10 hover:text-brand-300 sm:px-3 sm:py-3 sm:text-sm"
+                className="flex min-h-[3.25rem] items-center justify-center gap-1.5 rounded-lg border border-ink-700 px-2.5 py-2.5 text-center font-mono text-[0.7rem] leading-snug break-words text-brand-400 transition-colors duration-300 hover:border-brand-500 hover:bg-brand-500/10 hover:text-brand-300 sm:px-3 sm:py-3 sm:text-sm"
               >
+                <MapPin className="size-3 shrink-0 sm:size-3.5" />
                 {area.area}
               </Link>
             </FadeIn>
