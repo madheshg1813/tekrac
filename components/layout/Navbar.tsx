@@ -25,7 +25,7 @@ const serviceCategories = [
     subtitle: "Collection & recycling",
     panelTitle: "Chennai Service Areas",
     viewAllLabel: "View all locations",
-    viewAllHref: "/chennai",
+    viewAllHref: "/chennai/e-waste-recycling-service",
     items: getPublishedChennaiAreas().map((area) => ({
       label: area.area,
       href: `/chennai/${area.slug}`,

@@ -17,10 +17,10 @@ export const metadata: Metadata = {
   title: "E-Waste Recycling in Chennai",
   description:
     "TEKREC provides government-authorised e-waste collection, secure data destruction and certified recycling across Chennai, with dedicated locality pages for pincodes citywide.",
-  alternates: { canonical: "/chennai" },
+  alternates: { canonical: "/chennai/e-waste-recycling-service" },
 };
 
-export default function ChennaiPage() {
+export default function ChennaiPillarPage() {
   const published = getPublishedChennaiAreas();
 
   return (

@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      {
+        source: "/chennai",
+        destination: "/chennai/e-waste-recycling-service",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/process",
     "/certifications",
     "/contact",
-    "/chennai",
+    "/chennai/e-waste-recycling-service",
   ];
 
   const legalRoutes = ["/privacy", "/terms"];
@@ -29,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority:
         route === ""
           ? 1
-          : route === "/chennai"
+          : route === "/chennai/e-waste-recycling-service"
             ? 0.9
             : route.startsWith("/services/")
               ? 0.7

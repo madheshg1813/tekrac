@@ -47,7 +47,7 @@ export function CoverageGrid({
         </div>
 
         <Link
-          href="/chennai"
+          href="/chennai/e-waste-recycling-service"
           className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-brand-400 hover:text-brand-300"
         >
           View all cities
