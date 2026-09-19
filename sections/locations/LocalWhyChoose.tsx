@@ -1,11 +1,10 @@
-import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FadeIn } from "@/components/ui/FadeIn";
 
-export function LocalWhyChoose({ area }: { area: string }) {
+export function LocalWhyChoose({ area, pincode }: { area: string; pincode: string }) {
   const points = [
     `Dedicated collection rounds through ${area} and neighbouring localities, so pickups don't get lost in a citywide queue.`,
     "Every drive and device is logged against a manifest the moment it leaves your premises — full chain of custody, not just a promise.",
@@ -17,20 +16,29 @@ export function LocalWhyChoose({ area }: { area: string }) {
     <section className="section-padding bg-ink-50/60">
       <Container className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
         <FadeIn>
-          <div className="relative overflow-hidden rounded-[2rem] shadow-soft ring-1 ring-ink-100">
-            <div className="relative aspect-[4/3] w-full">
-              <Image
-                src="/hero-ewaste.jpg"
-                alt={`E-waste collected for recycling from ${area}, Chennai`}
-                fill
-                sizes="(min-width: 1024px) 40vw, 90vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-ink-950/10 to-transparent" />
+          <div className="relative">
+            <div className="aspect-square w-full max-w-md rounded-[2rem] bg-gradient-to-br from-brand-50 to-white p-2 shadow-soft ring-1 ring-ink-100">
+              <div className="flex h-full w-full flex-col justify-between rounded-[1.6rem] bg-gradient-to-br from-ink-950 to-ink-900 p-8">
+                <p className="text-sm font-semibold uppercase tracking-wider text-brand-400">
+                  Pincode {pincode}
+                </p>
+                <div>
+                  <p className="text-4xl font-bold text-white">{area}</p>
+                  <p className="mt-2 text-sm text-ink-300">
+                    Dedicated collection rounds running every week
+                  </p>
+                </div>
+                <div className="h-px w-full bg-white/10" />
+                <p className="text-sm text-ink-400">
+                  Certified, CPCB-authorised recycling — start to finish.
+                </p>
+              </div>
             </div>
-            <div className="absolute inset-x-5 bottom-5 rounded-xl border border-white/10 bg-ink-950/70 px-4 py-3 backdrop-blur-sm">
-              <p className="text-sm font-semibold text-white">Serving {area} residents & businesses</p>
-              <p className="text-xs text-ink-300">Certified, compliant, zero-landfill recycling</p>
+            <div className="absolute -bottom-8 -right-6 hidden w-56 rounded-2xl border border-ink-100 bg-white p-5 shadow-lift md:block">
+              <p className="text-3xl font-bold text-brand-600">24 hrs</p>
+              <p className="mt-1 text-xs font-medium text-ink-500">
+                Average pickup confirmation time
+              </p>
             </div>
           </div>
         </FadeIn>

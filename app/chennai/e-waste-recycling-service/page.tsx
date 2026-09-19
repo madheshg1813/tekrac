@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
+import { ArrowRight, Phone } from "lucide-react";
 
 import { chennaiAreas, getPublishedChennaiAreas, buildAreaFaqs } from "@/lib/locations";
+import { siteConfig } from "@/lib/constants";
 import { PageHero } from "@/components/PageHero";
+import { FloatingContact } from "@/components/FloatingContact";
 import { Container } from "@/components/ui/Container";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { LocalCoverageRadar } from "@/sections/locations/LocalCoverageRadar";
+import { RollingMarquee } from "@/sections/locations/RollingMarquee";
 import { TrustedBy } from "@/sections/home/TrustedBy";
 import { ServicesGrid } from "@/sections/services/ServicesGrid";
 import { WhyChooseUs } from "@/sections/home/WhyChooseUs";
@@ -30,9 +35,30 @@ export default function ChennaiPillarPage() {
         crumb="Chennai"
         title="E-Waste Recycling Services Across Chennai"
         description="Free doorstep pickup, certified data destruction and CPCB-authorised recycling for households, corporates and institutions throughout Chennai."
+        ctas={[
+          { label: siteConfig.phone, href: siteConfig.phoneHref, icon: Phone, variant: "outline" },
+          { label: "Request Pickup", href: "/contact", icon: ArrowRight },
+        ]}
+        trustNote="Government Authorised · Free Doorstep Pickup · Certificate Issued"
       />
 
+      <FloatingContact context="Chennai" />
+
       <TrustedBy />
+
+      <LocalCoverageRadar area="Chennai" />
+
+      <RollingMarquee
+        items={[
+          "Free Doorstep Pickup",
+          "CPCB Authorised",
+          "Serving All of Chennai",
+          "Certificate Issued",
+          "Secure Data Destruction",
+          "Zero Landfill Commitment",
+          "New Locality Added Daily",
+        ]}
+      />
 
       <section className="section-padding bg-white">
         <Container className="flex flex-col gap-6 text-center">

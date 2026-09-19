@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { ArrowRight, Phone } from "lucide-react";
 
 import {
   buildAreaFaqs,
@@ -8,14 +9,17 @@ import {
   isAreaPublished,
 } from "@/lib/locations";
 import { services } from "@/lib/data";
+import { siteConfig } from "@/lib/constants";
 import { PageHero } from "@/components/PageHero";
+import { FloatingContact } from "@/components/FloatingContact";
 import { Container } from "@/components/ui/Container";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { LocalCoverageRadar } from "@/sections/locations/LocalCoverageRadar";
+import { RollingMarquee } from "@/sections/locations/RollingMarquee";
 import { LocalHighlights } from "@/sections/locations/LocalHighlights";
 import { LocalWhyChoose } from "@/sections/locations/LocalWhyChoose";
 import { LocalPickupForm } from "@/sections/locations/LocalPickupForm";
-import { ServiceAreaGrid } from "@/sections/locations/ServiceAreaGrid";
 import { CoverageGrid } from "@/sections/locations/CoverageGrid";
 import { Stats } from "@/sections/home/Stats";
 import { WhyChooseUs } from "@/sections/home/WhyChooseUs";
@@ -50,6 +54,15 @@ export async function generateMetadata({
 
 const acceptedItems = services.slice(0, 6);
 
+const additionalAccepted = [
+  "Televisions & CRT Monitors",
+  "Batteries (Li-ion & Lead Acid)",
+  "Networking Equipment",
+  "Printers & Copiers",
+  "ACs, Fridges & Appliances",
+  "Mixed E-Scrap",
+];
+
 export default async function ChennaiAreaPage({
   params,
 }: {
@@ -67,11 +80,37 @@ export default async function ChennaiAreaPage({
       <PageHero
         eyebrow={`Pincode ${area.pincode}`}
         crumb={area.area}
-        title={`E-Waste Recycling in ${area.area}, Chennai`}
+        crumbs={[{ label: "Chennai", href: "/chennai/e-waste-recycling-service" }]}
+        title={
+          <>
+            E-Waste Recycling in <span className="whitespace-nowrap">{area.area}</span>
+          </>
+        }
         description={`Certified, government-authorised e-waste collection and recycling for households, offices and institutions in ${area.area} — with free doorstep pickup and secure data destruction.`}
+        ctas={[
+          { label: siteConfig.phone, href: siteConfig.phoneHref, icon: Phone, variant: "outline" },
+          { label: "Request Pickup", href: "/contact", icon: ArrowRight },
+        ]}
+        trustNote="Government Authorised · Free Doorstep Pickup · Certificate Issued"
       />
 
+      <FloatingContact context={area.area} />
+
       <LocalHighlights area={area.area} pincode={area.pincode} />
+
+      <LocalCoverageRadar area={area.area} pincode={area.pincode} />
+
+      <RollingMarquee
+        items={[
+          "Free Doorstep Pickup",
+          "CPCB Authorised",
+          `Serving ${area.area}`,
+          "Certificate Issued",
+          "Secure Data Destruction",
+          "Zero Landfill Commitment",
+          "Same-Day Slots Available",
+        ]}
+      />
 
       <section className="section-padding bg-ink-50/60">
         <Container className="flex flex-col gap-12">
@@ -100,22 +139,34 @@ export default async function ChennaiAreaPage({
               );
             })}
           </div>
+
+          <div className="hidden flex-col items-center gap-3 pt-2 text-center sm:flex">
+            <p className="text-sm font-semibold text-ink-700">
+              If it runs on power or holds a battery, we take it — also accepted:
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {additionalAccepted.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-ink-200 bg-white px-3 py-1 text-xs font-medium text-ink-600"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
         </Container>
       </section>
 
       <Stats />
 
-      <LocalWhyChoose area={area.area} />
+      <LocalWhyChoose area={area.area} pincode={area.pincode} />
 
       <ProcessTimeline />
       <WhyChooseUs />
-      <TestimonialsSection />
-
-      <ServiceAreaGrid
-        excludeSlug={area.slug}
-        limit={8}
-        title="Nearby Chennai localities we also cover"
-        description={`Serving neighbourhoods around ${area.area} — new localities added every day.`}
+      <TestimonialsSection
+        title={`Trusted by residents and businesses across Chennai`}
+        description={`Real feedback from customers who've scheduled a pickup in ${area.area} and beyond.`}
       />
 
       <LocalPickupForm area={area.area} pincode={area.pincode} />
@@ -126,7 +177,11 @@ export default async function ChennaiAreaPage({
         description={`Common questions from ${area.area} residents and businesses about our pickup and recycling process.`}
       />
 
-      <CoverageGrid excludeSlug={area.slug} />
+      <CoverageGrid
+        excludeSlug={area.slug}
+        title="Nearby Chennai localities we also cover"
+        description={`Serving neighbourhoods around ${area.area} — new localities added every day.`}
+      />
 
       <ContactCTA
         title={`Schedule your free e-waste pickup in ${area.area}`}
