@@ -21,7 +21,7 @@ const serviceCategories = [
   {
     key: "locations" as const,
     icon: Recycle,
-    title: "E-Waste Recycling",
+    title: "E-Waste Recycling Chennai",
     subtitle: "Collection & recycling",
     panelTitle: "Chennai Service Areas",
     viewAllLabel: "View all locations",
@@ -135,16 +135,15 @@ export function Navbar() {
                   transition={{ duration: 0.15, ease: "easeOut" }}
                   className="absolute left-0 top-full flex items-start gap-3 pt-3"
                 >
-                  <div className="w-72 rounded-2xl border border-ink-100 bg-white p-3 shadow-lift">
+                  <div className="w-80 rounded-2xl border border-ink-100 bg-white p-3 shadow-lift">
                     {serviceCategories.map((category) => {
                       const Icon = category.icon;
                       const isActive = category.key === activeCategory;
                       return (
-                        <button
+                        <Link
                           key={category.key}
-                          type="button"
+                          href={category.viewAllHref}
                           onMouseEnter={() => setActiveCategory(category.key)}
-                          onClick={() => setActiveCategory(category.key)}
                           className={cn(
                             "flex w-full items-center gap-3 rounded-xl p-3 text-left transition-colors",
                             isActive ? "bg-brand-50" : "hover:bg-ink-50"
@@ -159,13 +158,13 @@ export function Navbar() {
                             <Icon className="size-4" />
                           </span>
                           <span className="flex-1">
-                            <span className="block text-sm font-semibold text-ink-900">
+                            <span className="block whitespace-nowrap text-sm font-semibold text-ink-900">
                               {category.title}
                             </span>
                             <span className="block text-xs text-ink-500">{category.subtitle}</span>
                           </span>
                           <ChevronRight className="size-4 shrink-0 text-ink-300" />
-                        </button>
+                        </Link>
                       );
                     })}
                   </div>
